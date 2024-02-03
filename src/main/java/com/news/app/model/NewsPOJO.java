@@ -11,8 +11,10 @@ public class NewsPOJO {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+	
 	private String title;
 	private String content;
+	
 	public String getTitle() {
 		return title;
 	}

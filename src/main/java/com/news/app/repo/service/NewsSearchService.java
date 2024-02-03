@@ -19,4 +19,15 @@ public class NewsSearchService {
 		return newsPostRepo.findByTitleContainingIgnoreCaseOrContentContainingIgnoreCase(search, search);
 	}
 
+	public void saveData(NewsPOJO newsPOJO) {
+		System.out.println("In Service Class, save Data");
+		newsPostRepo.save(newsPOJO);
+		
+	}
+
+	public void saveAllPosts(List<NewsPOJO> newsPOJO) {
+		newsPostRepo.saveAll(newsPOJO);
+	}
+
+	
 }
