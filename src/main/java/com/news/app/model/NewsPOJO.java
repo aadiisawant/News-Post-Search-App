@@ -35,5 +35,9 @@ public class NewsPOJO {
 	public NewsPOJO() {
 		
 	}
+	@Override
+	public String toString() {
+		return "NewsPOJO [title=" + title + ", content=" + content + "]";
+	}
 	
 }

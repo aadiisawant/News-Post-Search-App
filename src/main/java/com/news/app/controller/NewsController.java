@@ -3,6 +3,7 @@ package com.news.app.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -21,21 +22,23 @@ public class NewsController {
 	NewsSearchService newsSearchService;
 	
 	@GetMapping("/search")
-	public List<NewsPOJO> getSearchedContent(@RequestParam String search){
+	public ResponseEntity<List<NewsPOJO>> getSearchedContent(@RequestParam String search){
 		System.out.println("In Search block");
 		return newsSearchService.getSearchedInfo(search);
 	}
 	
 	@PostMapping("/addpost")
-	public String addNewsPost(@RequestBody NewsPOJO newsPOJO) {
+	public ResponseEntity<String> addNewsPost(@RequestBody NewsPOJO newsPOJO) {
 		System.out.println("In addPost block");
-		newsSearchService.saveData(newsPOJO);
-		return "Data Added";
+		System.out.println("The Received Data is:"+newsPOJO);
+		return newsSearchService.saveData(newsPOJO);
 	}
+	
 	@PostMapping("/addposts")
-	public String addNewsPosts(@RequestBody List<NewsPOJO> newsPOJO) {
+	public ResponseEntity<String> addNewsPosts(@RequestBody List<NewsPOJO> newsPOJO) {
 		System.out.println("In addPost block");
-		newsSearchService.saveAllPosts(newsPOJO);
-		return "Data Added";
+		return newsSearchService.saveAllPosts(newsPOJO);
 	}
+	
+	
 }
